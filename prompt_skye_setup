@@ -43,12 +43,13 @@ function prompt_skwp_setup {
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     if [ $(xrdb -q color1 2> /dev/null) ]; then
       _prompt_skwp_colors=(
-        "%F{$(xrdb -get color20)}"  # Turquoise
+        "%F{$(xrdb -get color20)}"  # #62d6e8 # Turquoise
         "%F{$(xrdb -get color7)}" # White
         "%F{$(xrdb -get color10)}" # Orange
         "%F{$(xrdb -get color1)}" # Hotpink
         "%F{$(xrdb -get color17)}" # Limegreen
         "%F{$(xrdb -get color16)}" # Purple
+        "%F{$(xrdb -get color8)}" # Faded
       )
     else
       _prompt_skwp_colors=(
@@ -58,6 +59,7 @@ function prompt_skwp_setup {
         "%F{#ea51b2}" # Hotpink
         "%F{#00f769}" # Limegreen
         "%F{#b45bcf}" # Purple
+        "%F{#626483}" # Faded
       )
     fi
   else
@@ -83,7 +85,7 @@ function prompt_skwp_setup {
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
 
   # Define prompts.
-  PROMPT="${_prompt_skwp_colors[2]}%n%f@${_prompt_skwp_colors[4]}%m%f ${_prompt_skwp_colors[5]}%~%f "'${git_info:+${(e)git_info[prompt]}}'"$ "
+  PROMPT="${_prompt_skwp_colors[7]}%n%f@${_prompt_skwp_colors[4]}%m%f ${_prompt_skwp_colors[5]}%~%f "'${git_info:+${(e)git_info[prompt]}}'"$ "
   RPROMPT='%F{blue}${ruby_info[version]}'
 }
 
