@@ -37,9 +37,19 @@ function prompt_skye_setup {
 
   # Use extended color pallete if available.
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
-    if [ $(xrdb -g color1 2> /dev/null) ]; then
-      _prompt_skye_colors=(
-        "%F{$(xrdb -get color20)}"  # Turquoise
+    if type skyescheme > /dev/null; then
+      _prompt_skwp_colors=(
+        "%F{$(skyescheme cyan_accent)}"  # #62d6e8 # Turquoise
+        "%F{$(skyescheme foreground)}" # White
+        "%F{$(skyescheme warn)}" # Orange
+        "%F{$(skyescheme accent)}" # Hotpink
+        "%F{$(skyescheme correct)}" # Limegreen
+        "%F{$(skyescheme purple_accent)}" # Purple
+        "%F{$(skyescheme foreground_faded)}" # Faded
+      )
+    elif [ $(xrdb -q color1 2> /dev/null) ]; then
+      _prompt_skwp_colors=(
+        "%F{$(xrdb -get color20)}"  # #62d6e8 # Turquoise
         "%F{$(xrdb -get color7)}" # White
         "%F{$(xrdb -get color10)}" # Orange
         "%F{$(xrdb -get color1)}" # Hotpink
