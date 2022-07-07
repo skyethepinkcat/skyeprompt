@@ -41,16 +41,15 @@ function prompt_skwp_setup {
 
   # Use extended color pallete if available.
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
-    if [ $(xrdb -q color1) ]; then
-
-    _prompt_skwp_colors=(
-      "%F{$(xrdb -get color20)}"  # Turquoise
-      "%F{$(xrdb -get color7)}" # White
-      "%F{$(xrdb -get color10)}" # Orange
-      "%F{$(xrdb -get color1)}" # Hotpink
-      "%F{$(xrdb -get color17)}" # Limegreen
-      "%F{$(xrdb -get color16)}" # Purple
-    )
+    if [ $(xrdb -q color1 2> /dev/null) ]; then
+      _prompt_skwp_colors=(
+        "%F{$(xrdb -get color20)}"  # Turquoise
+        "%F{$(xrdb -get color7)}" # White
+        "%F{$(xrdb -get color10)}" # Orange
+        "%F{$(xrdb -get color1)}" # Hotpink
+        "%F{$(xrdb -get color17)}" # Limegreen
+        "%F{$(xrdb -get color16)}" # Purple
+      )
     else
       _prompt_skwp_colors=(
         "%F{#62d6e8}"  # Turquoise
