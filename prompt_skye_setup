@@ -38,7 +38,7 @@ function prompt_skye_setup {
   # Use extended color pallete if available.
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     if type skyescheme > /dev/null; then
-      _prompt_skwp_colors=(
+      _prompt_skye_colors=(
         "%F{$(skyescheme cyan_accent)}"  # #62d6e8 # Turquoise
         "%F{$(skyescheme foreground)}" # White
         "%F{$(skyescheme warn)}" # Orange
@@ -46,16 +46,18 @@ function prompt_skye_setup {
         "%F{$(skyescheme correct)}" # Limegreen
         "%F{$(skyescheme purple_accent)}" # Purple
         "%F{$(skyescheme foreground_faded)}" # Faded
+        "%F{$(skyescheme error)}" # red
       )
-    elif [ $(xrdb -q color1 2> /dev/null) ]; then
-      _prompt_skwp_colors=(
-        "%F{$(xrdb -get color20)}"  # #62d6e8 # Turquoise
-        "%F{$(xrdb -get color7)}" # White
-        "%F{$(xrdb -get color10)}" # Orange
-        "%F{$(xrdb -get color1)}" # Hotpink
-        "%F{$(xrdb -get color17)}" # Limegreen
-        "%F{$(xrdb -get color16)}" # Purple
+    elif [[ $(xrdb -q color1 2> /dev/null) ]]; then
+      _prompt_skye_colors=(
+        "%F{$(xrdb -get color20)}" #62d6e8 # Turquoise
+        "%F{$(xrdb -get foreground)}" # White
+        "%F{$(xrdb -get color11)}" # Orange
+        "%F{$(xrdb -get color5)}" # Hotpink
+        "%F{$(xrdb -get color2)}" # Limegreen
+        "%F{$(xrdb -get color4)}" # Purple
         "%F{$(xrdb -get color8)}" # Faded
+        "%F{$(xrdb -get color9)}" # Error
       )
     else
       _prompt_skye_colors=(
@@ -66,6 +68,7 @@ function prompt_skye_setup {
         "%F{#00f769}" # Limegreen
         "%F{#b45bcf}" # Purple
         "%F{#626483}" # Faded
+        "%F{#ff5555}" # Faded
       )
     fi
   else
@@ -77,6 +80,7 @@ function prompt_skye_setup {
       "%F{green}"
       "%F{purple}"
       "%F{white}"
+      "%F{red}"
     )
   fi
 
@@ -93,7 +97,7 @@ function prompt_skye_setup {
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
 
   # Define prompts.
-  PROMPT="${_prompt_skye_colors[7]}%n%f@${_prompt_skye_colors[4]}%m%f ${_prompt_skye_colors[5]}%~%f "'${git_info:+${(e)git_info[prompt]}}'"$ "
+  PROMPT="${_prompt_skye_colors[7]}%n%f@${_prompt_skye_colors[4]}%m%f ${_prompt_skye_colors[5]}%~%f "'${git_info:+${(e)git_info[prompt]}}'"%(?..${_prompt_skye_colors[8]})$ ${_prompt_skye_colors[1]}"
   RPROMPT='%F{blue}${ruby_info[version]}'
 }
 
