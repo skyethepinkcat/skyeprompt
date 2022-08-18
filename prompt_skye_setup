@@ -1,6 +1,7 @@
 #
 # A single line theme with Git information on the left and Ruby on the right.
 #
+
 # Authors:
 #   Steve Losh <steve@stevelosh.com>
 #   Bart Trojanowski <bart@jukie.net>
@@ -8,7 +9,7 @@
 #   steeef <steeef@gmail.com>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #   Yan Pritzker <yan@pritzker.ws>
-#   Skye Jonke <skye@skyenet.online> 
+#   Skye Jonke <skye@skyenet.online>
 #
 # Screenshots:
 #   http://i.imgur.com/gLgVp6Y.png
@@ -20,6 +21,10 @@ function prompt_skye_precmd {
     git-info
   fi
 
+  # Get Ruby information.
+  if (( $+functions[ruby-info] )); then
+  ¦ ruby-info
+  fi
 }
 
 function prompt_skye_setup {
