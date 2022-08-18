@@ -8,6 +8,7 @@
 #   steeef <steeef@gmail.com>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #   Yan Pritzker <yan@pritzker.ws>
+#   Skye Jonke <skye@skyenet.online> 
 #
 # Screenshots:
 #   http://i.imgur.com/gLgVp6Y.png
@@ -38,29 +39,29 @@ function prompt_skye_setup {
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     if type skyescheme > /dev/null; then
       _prompt_skye_colors=(
-        "%F{$(skyescheme cyan_accent)}"  # #62d6e8 # Turquoise
-        "%F{$(skyescheme foreground)}" # White
-        "%F{$(skyescheme warn)}" # Orange
-        "%F{$(skyescheme accent)}" # Hotpink
-        "%F{$(skyescheme correct)}" # Limegreen
-        "%F{$(skyescheme purple_accent)}" # Purple
+        "%F{$(skyescheme cyan_accent)}"      # Turquoise
+        "%F{$(skyescheme foreground)}"       # White
+        "%F{$(skyescheme warn)}"             # Orange
+        "%F{$(skyescheme accent)}"           # Hotpink
+        "%F{$(skyescheme correct)}"          # Limegreen
+        "%F{$(skyescheme purple_accent)}"    # Purple
         "%F{$(skyescheme foreground_faded)}" # Faded
         "%F{$(skyescheme error)}" # red
       )
     elif [[ $(xrdb -q color1 2> /dev/null) ]]; then
       _prompt_skye_colors=(
-        "%F{$(xrdb -get color20)}" #62d6e8 # Turquoise
-        "%F{$(xrdb -get foreground)}" # White
-        "%F{$(xrdb -get color11)}" # Orange
-        "%F{$(xrdb -get color5)}" # Hotpink
-        "%F{$(xrdb -get color2)}" # Limegreen
-        "%F{$(xrdb -get color4)}" # Purple
-        "%F{$(xrdb -get color8)}" # Faded
-        "%F{$(xrdb -get color9)}" # Error
+        "%F{$(xrdb -get color20)}"         # Turquoise
+        "%F{$(xrdb -get foreground)}"      # White
+        "%F{$(xrdb -get color11)}"         # Orange
+        "%F{$(xrdb -get color5)}"          # Hotpink
+        "%F{$(xrdb -get color2)}"          # Limegreen
+        "%F{$(xrdb -get color4)}"          # Purple
+        "%F{$(xrdb -get color8)}"          # Faded
+        "%F{$(xrdb -get color9)}"          # Error
       )
     else
       _prompt_skye_colors=(
-        "%F{#62d6e8}"  # Turquoise
+        "%F{#62d6e8}" # Turquoise
         "%F{#e9e9f4}" # White
         "%F{#ebff87}" # Orange
         "%F{#ea51b2}" # Hotpink
