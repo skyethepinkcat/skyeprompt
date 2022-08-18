@@ -96,7 +96,7 @@ function prompt_skye_setup {
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
 
   # Define prompts.
-  PROMPT="${_prompt_skye_colors[7]}%n%f@${_prompt_skye_colors[4]}%m%f ${_prompt_skye_colors[5]}%~%f "'${git_info:+${(e)git_info[prompt]}}'"%(?..${_prompt_skye_colors[8]})$ ${_prompt_skye_colors[1]}"
+  PROMPT="${_prompt_skye_colors[7]}%n%f@${_prompt_skye_colors[4]}%m%f ${_prompt_skye_colors[5]}%~%f "'${git_info:+${(e)git_info[prompt]}}'"%(?..${_prompt_skye_colors[8]})$ ${_prompt_skye_colors[2]}"
   RPROMPT='%F{blue}${ruby_info[version]}'
 }
 
