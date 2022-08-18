@@ -23,7 +23,7 @@ function prompt_skye_precmd {
 
   # Get Ruby information.
   if (( $+functions[ruby-info] )); then
-  ¦ ruby-info
+    ruby-info
   fi
 }
 
