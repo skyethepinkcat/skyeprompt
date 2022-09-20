@@ -16,6 +16,10 @@
 #
 
 function prompt_skye_precmd {
+
+
+  _prompt_skye_pwd=$(prompt-pwd)
+
   # Get Git repository information.
   if (( $+functions[git-info] )); then
     git-info
@@ -41,7 +45,7 @@ function prompt_skye_setup {
   zstyle ':prezto:module:prompt' managed 'yes'
 
   # Use extended color pallete if available.
-  if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
+  if [[ $TERM = *256color* || $TERM = *rxvt* || $TERM = *kitty* ]]; then
     if type skyescheme > /dev/null; then
       _prompt_skye_colors=(
         "%F{$(skyescheme cyan_accent)}"      # Turquoise
@@ -102,7 +106,7 @@ function prompt_skye_setup {
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
 
   # Define prompts.
-  PROMPT="${_prompt_skye_colors[7]}%n%f@${_prompt_skye_colors[4]}%m%f ${_prompt_skye_colors[5]}%~%f "'${git_info:+${(e)git_info[prompt]}}'"$ "
+  PROMPT="${_prompt_skye_colors[7]}%n%f@${_prompt_skye_colors[4]}%m%f ${_prompt_skye_colors[5]}${_prompt_skye_pwd}%f "'${git_info:+${(e)git_info[prompt]}}'"$ "
   RPROMPT='%(?..%130(?..${_prompt_skye_colors[8]}[%?]))%f${_prompt_skye_colors[1]}${ruby_info[version]}'
 }
 
