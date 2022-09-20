@@ -15,8 +15,10 @@
 #   http://i.imgur.com/gLgVp6Y.png
 #
 
-function prompt_skye_precmd() {
+# Load dependencies.
+pmodload 'helper'
 
+function prompt_skye_precmd() {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
@@ -108,7 +110,7 @@ function prompt_skye_setup {
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
 
   # Define prompts.
-  PROMPT="${_prompt_skye_colors[7]}%n%f@${_prompt_skye_colors[4]}%m%f ${_prompt_skye_colors[5]}${_prompt_skye_pwd}%f "'${git_info:+${(e)git_info[prompt]}}'"$ "
+  PROMPT='${_prompt_skye_colors[7]}%n%f@${_prompt_skye_colors[4]}%m%f ${_prompt_skye_colors[5]}${_prompt_skye_pwd}%f ${git_info:+${(e)git_info[prompt]}}$ '
   RPROMPT='%(?..%130(?..${_prompt_skye_colors[8]}[%?]))%f${_prompt_skye_colors[1]}${ruby_info[version]}'
 }
 
