@@ -15,8 +15,10 @@
 #   http://i.imgur.com/gLgVp6Y.png
 #
 
-function prompt_skye_precmd {
+function prompt_skye_precmd() {
 
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
 
   _prompt_skye_pwd=$(prompt-pwd)
 
