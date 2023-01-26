@@ -49,7 +49,7 @@ function prompt_skye_setup {
   zstyle ':prezto:module:prompt' managed 'yes'
 
   # Use extended color pallete if available.
-  if [[ $TERM = *256color* || $TERM= "alacritty" $TERM = *rxvt* || $TERM = *kitty* ]]; then
+  if [[ $TERM = *256color* || $TERM = "alacritty" || $TERM = *rxvt* || $TERM = *kitty* ]]; then
     if type skyescheme > /dev/null; then
       _prompt_skye_colors=(
         "%F{$(skyescheme cyan_accent)}"      # Turquoise
